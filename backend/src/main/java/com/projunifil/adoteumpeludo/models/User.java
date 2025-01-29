@@ -7,7 +7,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projunifil.adoteumpeludo.security.AuthorityEnum;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -44,6 +47,8 @@ public class User extends AbstractAuditingEntity<Long> {
     private String imageUrl;
 
     @JsonIgnore
+    @ElementCollection
+    @Enumerated(EnumType.STRING) 
     private Set<AuthorityEnum> authorities;
 
 
