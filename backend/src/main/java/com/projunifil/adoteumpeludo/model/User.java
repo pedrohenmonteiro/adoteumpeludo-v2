@@ -1,4 +1,4 @@
-package com.projunifil.adoteumpeludo.models;
+package com.projunifil.adoteumpeludo.model;
 
 import java.util.Locale;
 import java.util.Set;

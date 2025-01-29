@@ -1,4 +1,4 @@
-package com.projunifil.adoteumpeludo.models;
+package com.projunifil.adoteumpeludo.model;
 
 import java.io.Serializable;
 import java.time.Instant;

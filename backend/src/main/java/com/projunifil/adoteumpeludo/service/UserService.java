@@ -5,7 +5,7 @@ import java.util.HashSet;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.projunifil.adoteumpeludo.models.User;
+import com.projunifil.adoteumpeludo.model.User;
 import com.projunifil.adoteumpeludo.repository.UserRepository;
 import com.projunifil.adoteumpeludo.security.AuthorityEnum;
 
