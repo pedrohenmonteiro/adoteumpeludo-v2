@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.projunifil.adoteumpeludo.model.User;
 import com.projunifil.adoteumpeludo.service.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api")
 public class AccountController {
@@ -21,7 +23,7 @@ public class AccountController {
     }
 
     @PostMapping("/register")
-    public void registerAccount(@RequestBody User user) {   
+    public void registerAccount(@Valid @RequestBody User user) {   
         userService.userSignUp(user);
     }
     
