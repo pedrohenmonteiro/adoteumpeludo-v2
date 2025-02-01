@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.stream.Collectors;
 
+import static com.projunifil.adoteumpeludo.security.SecurityUtils.JWT_ALGORITHM;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,7 +24,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.projunifil.adoteumpeludo.config.SecurityJwtConfig;
 import com.projunifil.adoteumpeludo.dto.LoginDTO;
 
 import jakarta.validation.Valid;
@@ -71,7 +72,7 @@ public class AuthenticateController {
             .claim("auth", authorities)
             .build();
 
-        JwsHeader jwsHeader = JwsHeader.with(SecurityJwtConfig.JWT_ALGORITHM).build();
+        JwsHeader jwsHeader = JwsHeader.with(JWT_ALGORITHM).build();
         return this.jwtEncoder.encode(JwtEncoderParameters.from(jwsHeader, claims)).getTokenValue();
     }
 
