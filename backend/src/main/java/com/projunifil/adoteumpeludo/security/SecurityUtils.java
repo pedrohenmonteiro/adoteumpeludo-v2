@@ -12,6 +12,8 @@ public class SecurityUtils {
     
     public static final MacAlgorithm JWT_ALGORITHM = MacAlgorithm.HS512;
 
+    public static final String DEFAULT_AUDITOR = "system";
+
        public static Optional<String> getCurrentUserLogin() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         return Optional.ofNullable(extractPrincipal(securityContext.getAuthentication()));
@@ -23,4 +25,8 @@ public class SecurityUtils {
         }
         return null;
     }
+
+
+
+    
 }
