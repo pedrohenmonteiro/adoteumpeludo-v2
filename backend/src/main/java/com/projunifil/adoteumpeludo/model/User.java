@@ -21,7 +21,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends AbstractAuditingEntity<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,9 +31,9 @@ public class User {
     @Column(length = 50, unique = true, nullable = false)
     private String username;
 
-   // @JsonIgnore
+    @JsonIgnore
     @NotNull
-  // @Size(min = 60, max = 60)
+    @Size(min = 60, max = 60)
     @Column(length = 60, nullable = false)
     private String password;
 
@@ -46,7 +46,6 @@ public class User {
     @Column(name = "image_url", length = 256)
     private String imageUrl;
 
-    @JsonIgnore
     @ElementCollection
     @Enumerated(EnumType.STRING) 
     private Set<AuthorityEnum> authorities;

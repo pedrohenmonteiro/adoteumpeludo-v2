@@ -4,12 +4,14 @@ import java.util.HashSet;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.projunifil.adoteumpeludo.dto.AdminUserDTO;
 import com.projunifil.adoteumpeludo.model.User;
 import com.projunifil.adoteumpeludo.repository.UserRepository;
 import com.projunifil.adoteumpeludo.security.AuthorityEnum;
+import com.projunifil.adoteumpeludo.security.SecurityUtils;
 
-import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
@@ -25,24 +27,34 @@ public class UserService {
             this.passwordEncoder = passwordEncoder;
     }
 
-    public User userSignUp(User inUser) {
+    public User userSignUp(AdminUserDTO userDto, String password) {
 
-        userRepository.findByEmailIgnoreCase(inUser.getEmail())
+        userRepository.findByEmailIgnoreCase(userDto.getEmail())
         .ifPresent(_ -> {
             throw new RuntimeException("E-mail already exists");
         });
 
-        userRepository.findByUsername(inUser.getUsername())
+        userRepository.findByUsername(userDto.getUsername().toLowerCase())
         .ifPresent(_ -> {
             throw new RuntimeException("Username already exists");
         });
 
-        inUser.setPassword(passwordEncoder.encode(inUser.getPassword()));
+        User newUser = new User();
+        String encryptedPassword = passwordEncoder.encode(password);
+        newUser.setUsername(userDto.getUsername().toLowerCase());
+        newUser.setPassword(encryptedPassword);
+        newUser.setEmail(userDto.getEmail().toLowerCase());
+        newUser.setImageUrl(userDto.getImageUrl());
         var authorities = new HashSet<>();
-        authorities.add(AuthorityEnum.ROLE_USER);
+        authorities.add(AuthorityEnum.ROLE_USER.getRole());
 
-        return userRepository.save(inUser);
+        return userRepository.save(newUser);
     }
      
+    @Transactional(readOnly = true)
+    public User getByLogin() {
+        return SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findByEmailIgnoreCase)
+                    .orElseThrow(() -> new RuntimeException("User not found"));
+    }
 
 }
