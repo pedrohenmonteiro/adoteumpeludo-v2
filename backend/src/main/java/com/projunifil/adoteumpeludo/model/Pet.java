@@ -110,9 +110,9 @@ public class Pet {
 }
 
 enum PetType {
-    DOG, CAT
+    CACHORRO, GATO
 }
 
 enum Gender {
-    MALE, FEMALE
+    MACHO, FÊMEA
 }
