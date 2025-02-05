@@ -30,10 +30,6 @@ public class Pet {
     @Column(nullable = false)
     private PetType type;
     
-    @Size(max = 256)
-    @Column(name = "image_url", length = 256, nullable = false)
-    private String imageUrl;
-    
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Gender gender;
@@ -74,14 +70,6 @@ public class Pet {
 
     public void setType(PetType type) {
         this.type = type;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public Gender getGender() {
