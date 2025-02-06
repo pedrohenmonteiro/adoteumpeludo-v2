@@ -1,6 +1,7 @@
 package com.projunifil.adoteumpeludo.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,8 +18,7 @@ public class Ad {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "pet_id", nullable = false)
+    @Embedded
     private Pet pet;
 
     @ManyToOne(optional = false)
@@ -28,6 +28,7 @@ public class Ad {
     @Size(max = 256)
     @Column(name = "image_url", length = 256, nullable = false)
     private String imageUrl;
+
 
     public Long getId() {
         return id;

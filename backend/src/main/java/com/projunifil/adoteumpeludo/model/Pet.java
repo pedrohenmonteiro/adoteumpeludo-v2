@@ -1,19 +1,15 @@
 package com.projunifil.adoteumpeludo.model;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
-@Entity
-@Table(name = "pets")
+@Embeddable
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,8 +33,7 @@ public class Pet {
     @Column(columnDefinition = "TEXT")
     private String description;
     
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime listingDate = LocalDateTime.now();
+
     
     public Long getId() {
         return id;
@@ -88,13 +83,6 @@ public class Pet {
         this.description = description;
     }
 
-    public LocalDateTime getListingDate() {
-        return listingDate;
-    }
-
-    public void setListingDate(LocalDateTime listingDate) {
-        this.listingDate = listingDate;
-    }
 }
 
 enum PetType {
