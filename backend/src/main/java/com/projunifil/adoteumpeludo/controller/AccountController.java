@@ -13,6 +13,7 @@ import com.projunifil.adoteumpeludo.service.UserService;
 import jakarta.validation.Valid;
 
 
+
 @RestController
 @RequestMapping("/api")
 public class AccountController {
@@ -34,5 +35,7 @@ public class AccountController {
     public AdminUserDTO getAccount() {
         return new AdminUserDTO(userService.getByLogin());
     }
+
+    
 
 }

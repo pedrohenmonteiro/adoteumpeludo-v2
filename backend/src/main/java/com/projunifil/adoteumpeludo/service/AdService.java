@@ -1,6 +1,8 @@
 package com.projunifil.adoteumpeludo.service;
 
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.projunifil.adoteumpeludo.model.Ad;
@@ -22,5 +24,7 @@ public class AdService {
         return adRepository.save(ad);
     }
     
-
+    public Page<Ad> getAllAds(Pageable pageable) {
+        return adRepository.findAll(pageable);
+    }
 }
