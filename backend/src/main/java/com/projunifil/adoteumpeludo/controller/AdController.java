@@ -1,12 +1,12 @@
 package com.projunifil.adoteumpeludo.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +18,7 @@ import com.projunifil.adoteumpeludo.model.Ad;
 import com.projunifil.adoteumpeludo.model.User;
 import com.projunifil.adoteumpeludo.service.AdService;
 import com.projunifil.adoteumpeludo.service.UserService;
+import com.projunifil.adoteumpeludo.util.PaginationUtil;
 
 
 @RestController
@@ -40,25 +41,12 @@ public class AdController {
 
 
     @GetMapping("/ads")
-    public Map<String, Object> getAllAds(Pageable pageable) {
-        final Page<Ad> page = adService.getAllAds(pageable);
-        Map<String, Object> response = new HashMap<>();
-        response.put("total", page.getTotalElements());
-        response.put("data", page.getContent());
-
-         List<String> links = new ArrayList<>();
-        String uri = ServletUriComponentsBuilder.fromCurrentRequest().toUriString();
-
-         if (page.hasPrevious()) {
-        links.add(uri + "?page=" + (page.getNumber() - 1) + "&size=" + pageable.getPageSize());
-        }
-        if (page.hasNext()) {
-        links.add(uri + "?page=" + (page.getNumber() + 1) + "&size=" + pageable.getPageSize());
-        }
-    
-        response.put("links", links);
-
-        return response;
+   public ResponseEntity<List<Ad>> getAllAds(Pageable pageable) {
+        Page<Ad> page = adService.getAllAds(pageable);
+        
+        HttpHeaders headers = PaginationUtil.generatePaginationHeaders(page, ServletUriComponentsBuilder.fromCurrentRequest());
+        
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
     
 }
