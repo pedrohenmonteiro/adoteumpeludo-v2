@@ -45,8 +45,9 @@ public class UserService {
         newUser.setPassword(encryptedPassword);
         newUser.setEmail(userDto.getEmail().toLowerCase());
         newUser.setImageUrl(userDto.getImageUrl());
-        var authorities = new HashSet<>();
-        authorities.add(AuthorityEnum.ROLE_USER.getRole());
+        var authorities = new HashSet<AuthorityEnum>();
+        authorities.add(AuthorityEnum.ROLE_USER);
+        newUser.setAuthorities(authorities);
 
         return userRepository.save(newUser);
     }
