@@ -1,7 +1,11 @@
+import { HomeView } from "@/modules/home/ui/views/home-view";
+
 const Home = () => {
-    return ( <div>
-        Teste
-    </div> );
-}
- 
+  return (
+    <>
+      <HomeView />
+    </>
+  );
+};
+
 export default Home;

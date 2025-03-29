@@ -1,10 +1,14 @@
-import { HomeNavbar } from "@/modules/home/ui/home-navbar";
+import { HomeNavbar } from "@/modules/home/ui/components/home-navbar";
 
-const HomeLayout = () => {
-    return ( <>
-    <HomeNavbar />
-    <p>Main...</p>
-    </> );
-}
- 
-export default HomeLayout;
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      <HomeNavbar />
+      <div className="flex min-h-screen pt-[4rem]">
+        <main className="flex-1 overflow-y-auto">{children}</main>
+      </div>
+    </>
+  );
+};
+
+export default Layout;
