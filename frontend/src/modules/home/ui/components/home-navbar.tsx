@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const HomeNavbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 h-12 bg-purple-500 flex px-4 z-50">
@@ -5,7 +7,9 @@ export const HomeNavbar = () => {
         className="flex items-center justify-between w-full text-white"
         aria-label="Main navigation"
       >
-        <span className="font-bold">Adote um Peludo</span>
+        <Link href="/">
+          <span className="font-bold">Adote um Peludo</span>
+        </Link>
         <ul className="flex gap-8 items-center">
           <li>
             <a
@@ -13,7 +17,7 @@ export const HomeNavbar = () => {
               className="hover:underline"
               aria-label="Encontrar um amigo"
             >
-              Encontrar um amigo
+              Anunciar um pet
             </a>
           </li>
           <li>
@@ -22,7 +26,7 @@ export const HomeNavbar = () => {
               className="hover:underline"
               aria-label="Anunciar um Pet"
             >
-              Anunciar um Pet
+              Entrar
             </a>
           </li>
           <li>

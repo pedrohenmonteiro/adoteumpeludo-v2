@@ -1,6 +1,6 @@
 import { HomeView } from "@/modules/home/ui/views/home-view";
 
-const Home = () => {
+const Page = () => {
   return (
     <>
       <HomeView />
@@ -8,4 +8,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Page;

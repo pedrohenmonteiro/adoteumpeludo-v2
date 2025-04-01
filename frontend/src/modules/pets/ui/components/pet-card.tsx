@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface PetsCardProps {
   id: number;
@@ -20,9 +21,12 @@ export const PetCard = ({ pet }: { pet: PetsCardProps }) => {
       <div className="p-4 flex flex-col flex-grow">
         <h2 className="text-xl font-bold text-gray-800">{pet.name}</h2>
         <p className="text-gray-700 text-sm">{pet.description}</p>
-        <button className="mt-4 bg-amber-400 text-amber-800 py-2 rounded-lg shadow hover:bg-amber-500 transition duration-200">
+        <Link
+          href={`/pets/${pet.id}`}
+          className="mt-4 bg-amber-400 text-amber-800 py-2 rounded-lg shadow hover:bg-amber-500 transition duration-200 text-center"
+        >
           Adotar
-        </button>
+        </Link>
       </div>
     </div>
   );
