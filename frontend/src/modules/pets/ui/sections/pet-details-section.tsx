@@ -7,15 +7,13 @@ interface Props {
 
 export const PetDetailsSection = ({ petId }: Props) => {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden">
-      <div className="md:flex">
-        {/* Galeria de fotos */}
-        <div className="md:w-1/2">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="md:flex gap-8">
+        <div className="md:w-1/2 lg:w-3/5 mb-8 md:mb-0">
           <PetGallery petId={petId} />
         </div>
 
-        {/* Informações do pet */}
-        <div className="md:w-1/2 p-8">
+        <div className="md:w-1/2 lg:w-2/5">
           <PetInfo petId={petId} />
         </div>
       </div>

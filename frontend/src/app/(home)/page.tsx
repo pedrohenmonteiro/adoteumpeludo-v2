@@ -1,10 +1,11 @@
+import { HomePetSection } from "@/modules/home/ui/sections/home-pet-section";
 import { HomeView } from "@/modules/home/ui/views/home-view";
 
 const Page = () => {
   return (
-    <>
-      <HomeView />
-    </>
+    <HomeView>
+      <HomePetSection />
+    </HomeView>
   );
 };
 

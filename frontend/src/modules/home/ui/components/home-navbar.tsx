@@ -30,12 +30,13 @@ export const HomeNavbar = () => {
             </a>
           </li>
           <li>
-            <button
-              className="bg-white text-purple-500 px-4 py-1 rounded-md hover:bg-gray-200"
+            <Link
+              href={`/sign-in`}
+              className="bg-white text-purple-500 px-4 py-2 rounded-md hover:bg-gray-200"
               aria-label="Cadastre-se"
             >
               Cadastre-se
-            </button>
+            </Link>
           </li>
         </ul>
       </nav>
