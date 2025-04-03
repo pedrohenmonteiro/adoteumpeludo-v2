@@ -9,29 +9,17 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export const SignInSection = () => {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
-  // const router = useRouter();
-
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-
-  //   try {
-  //     // Simulando uma chamada de API
-  //     await new Promise((resolve) => setTimeout(resolve, 1000));
-  //     router.push("/");
-  //   } catch (error) {
-  //     console.error("Login error:", error);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+  const [isLoading, setIsLoading] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const router = useRouter();
 
   const loginSchema = z.object({
     email: z
@@ -48,18 +36,57 @@ export const SignInSection = () => {
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
+    defaultValues: { email: "", password: "" },
   });
 
-  const onSubmit = async (data: z.infer<typeof loginSchema>) => {
-    console.log(data);
+  const onSubmit = async (data: LoginFormData) => {
+    setIsLoading(true);
+    setLoginError(null);
+
+    try {
+      const response = await fetch("http://localhost:8080/api/authenticate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          response.status === 401
+            ? "Email ou senha incorretos"
+            : "Erro ao realizar login"
+        );
+      }
+
+      const responseData = await response.json();
+      if (!responseData.idToken) {
+        throw new Error("Autenticação falhou");
+      }
+
+      localStorage.setItem("idToken", responseData.idToken);
+      localStorage.setItem(
+        "tokenExpiry",
+        String(Date.now() + responseData.expiresIn * 1000)
+      );
+
+      router.push("/");
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message.includes("Failed to fetch") ||
+            error.message.includes("NetworkError")
+            ? "Erro de conexão com o servidor"
+            : error.message
+          : "Ocorreu um erro durante o login";
+
+      setLoginError(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+    <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200 w-full max-w-md">
       <div className="text-center mb-6">
         <h1 className="text-2xl font-bold text-purple-900">
           Bem-vindo de volta!
@@ -67,54 +94,70 @@ export const SignInSection = () => {
         <p className="text-gray-600 mt-2">Faça login para continuar</p>
       </div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="space-y-4 flex flex-col">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder="seu@email.com" />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="seu@email.com" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Senha</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder="••••••••" />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-          </div>
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Senha</FormLabel>
+                <FormControl>
+                  <Input {...field} type="password" placeholder="••••••••" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-          <div className="flex items-center justify-between mt-8">
-            <a
+          <div className="flex items-center justify-between">
+            <Link
               href="#"
               className="text-sm text-purple-600 hover:text-purple-500"
             >
               Esqueceu a senha?
-            </a>
+            </Link>
           </div>
+
+          {loginError && (
+            <div className="text-red-600 text-sm text-center p-2 bg-red-50 rounded-md">
+              {loginError}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={`w-full mt-6 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors ${
+              isLoading ? "opacity-70 cursor-not-allowed" : ""
+            }`}
+          >
+            {isLoading ? "Entrando..." : "Entrar"}
+          </button>
         </form>
       </Form>
       <div className="mt-6 text-center">
         <p className="text-sm text-gray-600">
           Não tem uma conta?{" "}
-          <a
+          <Link
             href="/sign-up"
             className="font-medium text-purple-600 hover:text-purple-500"
           >
             Cadastre-se
-          </a>
+          </Link>
         </p>
       </div>
     </div>

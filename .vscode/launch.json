@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AdoteumpeludoApplication<adoteumpeludo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.projunifil.adoteumpeludo.AdoteumpeludoApplication",
+            "projectName": "adoteumpeludo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
