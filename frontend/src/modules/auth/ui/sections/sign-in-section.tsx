@@ -59,9 +59,7 @@ export const SignInSection = () => {
   return (
     <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200 w-full max-w-md">
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold text-purple-900">
-          Bem-vindo de volta!
-        </h1>
+        <h1 className="text-2xl font-bold text-purple-900">Adote um peludo</h1>
         <p className="text-gray-600 mt-2">Faça login para continuar</p>
       </div>
       <Form {...form}>
@@ -124,7 +122,7 @@ export const SignInSection = () => {
         <p className="text-sm text-gray-600">
           Não tem uma conta?{" "}
           <Link
-            href="/sign-up"
+            href="/register"
             className="font-medium text-purple-600 hover:text-purple-500"
           >
             Cadastre-se

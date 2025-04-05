@@ -31,7 +31,7 @@ export const HomeNavbar = () => {
           </li>
           <li>
             <Link
-              href={`/cadastro`}
+              href={`/register`}
               className="bg-white text-purple-500 px-4 py-2 rounded-md hover:bg-gray-200"
               aria-label="Cadastre-se"
             >
