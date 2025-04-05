@@ -16,9 +16,9 @@ export const PetInfo = (petId: Props) => {
       "Um cachorro muito amigável e brincalhão. Adora crianças e outros animais. Está castrado e com todas as vacinas em dia.",
     location: "Londrina, PR",
     owner: {
-      name: "Maria Silva",
-      email: "maria.silva@example.com",
-      phone: "(43) 98765-4321",
+      name: "Fulana Silva",
+      email: "fulana.silva@example.com",
+      phone: "(43) 99999-0000",
     },
   };
 

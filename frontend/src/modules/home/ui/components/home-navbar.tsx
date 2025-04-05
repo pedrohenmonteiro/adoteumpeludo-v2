@@ -13,7 +13,7 @@ export const HomeNavbar = () => {
         <ul className="flex gap-8 items-center">
           <li>
             <a
-              href="/encontrar-amigo"
+              href="/anunciar"
               className="hover:underline"
               aria-label="Encontrar um amigo"
             >
@@ -21,17 +21,17 @@ export const HomeNavbar = () => {
             </a>
           </li>
           <li>
-            <a
-              href="/anunciar-pet"
+            <Link
+              href="/login"
               className="hover:underline"
               aria-label="Anunciar um Pet"
             >
               Entrar
-            </a>
+            </Link>
           </li>
           <li>
             <Link
-              href={`/sign-in`}
+              href={`/cadastro`}
               className="bg-white text-purple-500 px-4 py-2 rounded-md hover:bg-gray-200"
               aria-label="Cadastre-se"
             >
