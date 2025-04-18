@@ -8,7 +8,7 @@ export const PetGallery = ({ petId }: Props) => {
     "https://img.nsctotal.com.br/wp-content/uploads/2023/10/Pets-Banco-de-imagens-1.jpg";
 
   return (
-    <div className="overflow-hidden shadow-lg">
+    <div className="overflow-hidden border border-black">
       <Image
         src={petPhoto}
         alt={`Pet ${petId}`}

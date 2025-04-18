@@ -27,16 +27,16 @@ export const PetInfo = (petId: Props) => {
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{petData.name}</h1>
 
       <div className="flex flex-wrap gap-2 mb-6">
-        <span className="bg-amber-100 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
+        <span className="bg-amber-50 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
           {petData.age}
         </span>
-        <span className="bg-amber-100 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
+        <span className="bg-amber-50 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
           {petData.breed}
         </span>
-        <span className="bg-amber-100 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
+        <span className="bg-amber-50 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
           {petData.size}
         </span>
-        <span className="bg-amber-100 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
+        <span className="bg-amber-50 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
           {petData.gender}
         </span>
       </div>
@@ -56,7 +56,7 @@ export const PetInfo = (petId: Props) => {
           Contato do Anunciante
         </h2>
 
-        <div className="bg-gray-50 p-5 rounded-lg border border-gray-200">
+        <div className="bg-amber-50 p-5 border border-amber-800">
           <div className="mb-4">
             <h3 className="font-medium text-gray-800 text-lg">
               {petData.owner.name}
