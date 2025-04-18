@@ -65,9 +65,9 @@ export const SignUpSection = () => {
   };
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200 w-full max-w-md">
+    <div className="bg-white p-8 shadow-md border border-black w-full max-w-md">
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold text-purple-900">Crie sua conta</h1>
+        <h1 className="text-2xl font-bold text-black">Crie sua conta</h1>
         <p className="text-gray-600 mt-2">
           Preencha os dados para se cadastrar
         </p>
@@ -125,7 +125,7 @@ export const SignUpSection = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className={`w-full mt-6 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors ${
+            className={`w-full mt-6 bg-lime-300 text-black border border-black py-2 px-4 hover:bg-lime-400 transition-colors ${
               isLoading ? "opacity-70 cursor-not-allowed" : ""
             }`}
           >
@@ -138,7 +138,7 @@ export const SignUpSection = () => {
           Já tem uma conta?{" "}
           <Link
             href="/login"
-            className="font-medium text-purple-600 hover:text-purple-500"
+            className="font-medium text-lime-600 hover:text-lime-500"
           >
             Faça login
           </Link>

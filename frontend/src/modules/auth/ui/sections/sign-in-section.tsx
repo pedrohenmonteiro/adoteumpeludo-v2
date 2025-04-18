@@ -57,9 +57,9 @@ export const SignInSection = () => {
   };
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200 w-full max-w-md">
+    <div className="bg-white p-8 shadow-md border border-black w-full max-w-md">
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold text-purple-900">Adote um peludo</h1>
+        <h1 className="text-2xl font-bold text-black">Adote um peludo</h1>
         <p className="text-gray-600 mt-2">Faça login para continuar</p>
       </div>
       <Form {...form}>
@@ -70,7 +70,7 @@ export const SignInSection = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Email</FormLabel>
-                <FormControl>
+                <FormControl className="">
                   <Input {...field} placeholder="seu@email.com" />
                 </FormControl>
                 <FormMessage />
@@ -95,7 +95,7 @@ export const SignInSection = () => {
           <div className="flex items-center justify-between">
             <Link
               href="#"
-              className="text-sm text-purple-600 hover:text-purple-500"
+              className="text-sm text-lime-600 hover:text-lime-500"
             >
               Esqueceu a senha?
             </Link>
@@ -110,7 +110,7 @@ export const SignInSection = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className={`w-full mt-6 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors ${
+            className={`w-full mt-6 bg-lime-300 text-black py-2 px-4 border border-black hover:bg-lime-400 transition-colors ${
               isLoading ? "opacity-70 cursor-not-allowed" : ""
             }`}
           >
@@ -119,11 +119,11 @@ export const SignInSection = () => {
         </form>
       </Form>
       <div className="mt-6 text-center">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-700">
           Não tem uma conta?{" "}
           <Link
             href="/register"
-            className="font-medium text-purple-600 hover:text-purple-500"
+            className="font-medium text-lime-600 hover:text-lime-500"
           >
             Cadastre-se
           </Link>

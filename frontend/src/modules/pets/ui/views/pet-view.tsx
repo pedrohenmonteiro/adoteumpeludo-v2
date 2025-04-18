@@ -1,15 +1,13 @@
-import { PetDetailsSection } from "../sections/pet-details-section";
+import React from "react";
 
 interface Props {
-  petId: string;
+  children: React.ReactNode;
 }
 
-export const PetView = ({ petId }: Props) => {
-  petId = "123";
-
+export const PetView = ({ children }: Props) => {
   return (
     <div className="flex flex-col max-w-[1600px] mx-auto pt-2.5 px-4">
-      <PetDetailsSection petId={petId} />
+      {children}
     </div>
   );
 };

@@ -23,36 +23,35 @@ export const PetInfo = (petId: Props) => {
   };
 
   return (
-    <div className="mb-6 p-6 bg-white rounded-md shadow-lg">
+    <div className="mb-6 p-6 bg-white border border-black">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{petData.name}</h1>
 
       <div className="flex flex-wrap gap-2 mb-6">
-        <span className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium">
+        <span className="bg-amber-100 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
           {petData.age}
         </span>
-        <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+        <span className="bg-amber-100 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
           {petData.breed}
         </span>
-        <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+        <span className="bg-amber-100 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
           {petData.size}
         </span>
-        <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
+        <span className="bg-amber-100 text-amber-800 border border-amber-800 px-3 py-1 text-sm font-medium">
           {petData.gender}
         </span>
       </div>
 
       <div className="mb-8">
         <h2 className="text-xl font-semibold text-gray-700 mb-3">Sobre</h2>
-        <p className="text-gray-600 leading-relaxed">{petData.description}</p>
+        <p className="text-gray-800 leading-relaxed">{petData.description}</p>
 
         <div className="flex items-center gap-2 text-gray-600 mt-6">
-          <MapPin className="text-gray-500" />
+          <MapPin className="text-gray-800" />
           <span>{petData.location}</span>
         </div>
       </div>
 
-      {/* Seção de Contato do Anunciante */}
-      <div className="border-t border-gray-200 pt-6">
+      <div className="border-t border-black pt-6">
         <h2 className="text-xl font-semibold text-gray-700 mb-4">
           Contato do Anunciante
         </h2>
@@ -69,17 +68,17 @@ export const PetInfo = (petId: Props) => {
               <Mail className="text-gray-500 flex-shrink-0" size={20} />
               <a
                 href={`mailto:${petData.owner.email}`}
-                className="text-blue-600 hover:text-blue-800 hover:underline break-all"
+                className="text-gray-800 break-all"
               >
                 {petData.owner.email}
               </a>
             </div>
 
             <div className="flex items-center gap-3">
-              <Phone className="text-gray-500 flex-shrink-0" size={20} />
+              <Phone className="text-gray-800 flex-shrink-0" size={20} />
               <a
                 href={`tel:${petData.owner.phone.replace(/\D/g, "")}`}
-                className="text-gray-700 hover:text-gray-900 hover:underline"
+                className="text-gray-800 hover:text-gray-900 hover:underline"
               >
                 {petData.owner.phone}
               </a>
