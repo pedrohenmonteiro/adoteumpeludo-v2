@@ -1,6 +1,6 @@
 import { UserInfoSection } from "@/modules/user/ui/sections/user-info-section";
 import { UserPetsSection } from "@/modules/user/ui/sections/user-pets-section";
-import { UserProfileView } from "@/modules/user/ui/views/profile-view";
+import { UserView } from "@/modules/user/ui/views/profile-view";
 
 interface PageProps {
   params: { username: string };
@@ -9,10 +9,10 @@ interface PageProps {
 const Page = ({ params }: PageProps) => {
   params.username = "Rodolfo";
   return (
-    <UserProfileView>
+    <UserView>
       <UserInfoSection username={params.username} />
       <UserPetsSection username={params.username} />
-    </UserProfileView>
+    </UserView>
   );
 };
 

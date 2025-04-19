@@ -6,7 +6,7 @@ interface UserPetsSectionProps {
   username: string;
 }
 
-export const UserPetsSection = ({ username }: UserPetsSectionProps) => {
+export const UserPetsSection = ({}: UserPetsSectionProps) => {
   const userPets = [
     {
       id: 1,

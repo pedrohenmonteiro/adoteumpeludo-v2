@@ -50,7 +50,7 @@ const pets = [
 export const HomePetSection = () => {
   return (
     <div>
-      <div className="gap-4 gap-y-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 [@media(min-width:1600px)]:grid-cols-5">
+      <div className="gap-4 gap-y-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 [@media(min-width:1600px)]:grid-cols-5 mt-6">
         {pets.map((pet) => (
           <div key={pet.id}>
             <PetCard pet={pet} />

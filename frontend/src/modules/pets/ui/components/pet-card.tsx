@@ -11,7 +11,7 @@ interface PetsCardProps {
 export const PetCard = ({ pet }: { pet: PetsCardProps }) => {
   return (
     <Link href={`/pets/${pet.id}`}>
-      <div className="flex flex-col w-full group border border-black bg-amber-50 shadow-lg overflow-hidden transition-transform duration-300">
+      <div className="flex flex-col w-full group border border-black bg-white shadow-lg overflow-hidden transition-transform duration-300">
         <div className="relative w-full aspect-video">
           <Image
             src={pet.imageUrl}
